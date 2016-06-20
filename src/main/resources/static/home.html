@@ -1,0 +1,20 @@
+<div id="page-context" class="row">
+	<div ng-show="authenticated" class="row">
+		<div class="container" id="dashboard">
+			<div class="col-md-3">
+				<div class="list-group">
+				  <a class="list-group-item active">
+				    Dashboard
+				  </a>
+				  <a href="/mySchedules" class="list-group-item">Schedules</a>		  
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div  ng-show="!authenticated">
+		<div class="row">
+			<p>Do your login</p>
+		</div>	
+	</div>
+</div>

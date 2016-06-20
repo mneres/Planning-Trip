@@ -1,0 +1,77 @@
+<head>
+	<link rel="stylesheet" href="./css/background.css" />
+</head>
+
+<div class="row vertical-offset-100">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h10 class="panel-title">Create your account</h10>
+			</div>
+			<div class="panel-body">
+				<div class="page-header">
+					<h1><p class="text-center"><small>Join with us and trace your goals.</small><p></h1>
+				</div>
+				
+				  <div class="container-fluid"> 
+				  <div class="alert alert-danger" role="alert" ng-show="error &amp;&amp; error.length > 0">
+				      {{error}}
+				  </div>
+				  <div class="alert alert-success" role="alert" ng-show="message &amp;&amp; message.length > 0">
+				      {{message}}
+				      <a href="/login"><u>Sign in here</u></a>
+				  </div>
+				  <br/>
+				  <!-- Form for add new user -->
+			      	<form class="form-horizontal" name="myForm" role="form" ng-submit="addUser(newUserEmail, newUserPassword, newUserRePassword)" novalidate>  
+					       	<div class="form-group">
+						       	  <div class="form-group">
+						       	  	<label class="col-sm-3 control-label">Email: </label>
+						          	<div class="col-sm-9">
+						          		<input type="email" class="form-control" name="email" ng-model="newUserEmail" placeholder="Text your email ..." required/>
+						          		<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+											<span ng-show="myForm.email.$error.required">Email is required.</span>
+											<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+										</span>
+						          	</div>
+						          </div>
+						          
+						          <div class="form-group">
+						          	<label class="col-sm-3 control-label">Password</label>
+						          	<div class="col-sm-9">
+						          		<input type="password" class="form-control" name="password" ng-model="newUserPassword" placeholder="Text your password ..." required/>
+					     	 	  		<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+										  <span ng-show="myForm.password.$error.required">Password is required.</span>
+										</span>
+					     	 	  	</div>
+					     	 	  </div>
+					     	 	  
+					     	 	  <div class="form-group">
+					     	 	  <label class="col-sm-3 control-label" for="repeatPassword">Repeat your Password</label>
+								  	<div class="col-sm-9">
+								  		<input type="password" class="form-control" name="repassword" ng-model="newUserRePassword" placeholder="Retext your password ..." required/>
+								  		<span style="color:red" ng-show="myForm.repassword.$dirty && myForm.repassword.$invalid">
+										  <span ng-show="myForm.repassword.$error.required">Password is required.</span>
+										</span>
+								  	</div>
+								  </div>
+								  	<div class="col-sm-4">	
+								  	</div>
+								  	<div align="center" class="col-sm-4">								  
+									  	<button type="submit" class="btn btn-primary btn-block" title="Add" 
+									   	ng-disabled="myForm.email.$dirty && myForm.email.$invalid || myForm.email.$pristine ||
+									   				 myForm.password.$dirty && myForm.password.$invalid || myForm.password.$pristine ||
+									   				 myForm.repassword.$dirty && myForm.repassword.$invalid || myForm.repassword.$pristine">
+											Create account
+									  	</button>
+								  	</div>
+							  	</div>       
+						</form>
+					</div>
+				</div>
+			<div class="panel-footer">
+				<h6>Have you created your account? <a href="/login">sign in here</a></h6>
+			</div>
+		</div>
+	</div>
+</div>
