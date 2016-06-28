@@ -24,7 +24,25 @@
 	    
 	    $scope.getSchedule = function(){
 	    	$scope.selectedSchedule = ScheduleFactory.get({id: $routeParams.scheduleID});
-	    }
+	    };
+	    
+	    $scope.addTripOnSchedule = function(placeOfDeparture, arrivalEmplacement, 
+				transportCompany, transportPrice, accommodationName, accommodationPrice){
+	    	var trip = {
+	    			"placeOfDeparture": placeOfDeparture,
+	    			"arrivalEmplacement": arrivalEmplacement,
+	    			"transportCompany": transportCompany,
+	    			"transportPrice": transportPrice,
+	    			"accommodationName": accommodationName,
+	    			"accommodationPrice": accommodationPrice
+	    	};
+
+	    	$http.post('/api/schedules/' + $routeParams.scheduleID + '/addTrip', trip)
+			.success(function(data){
+	    		$scope.message = "Trip inserida com sucesso";
+	    		console.log(data);
+			});
+	   };
 	};
 	
 	ScheduleController.$inject = ['$scope', '$http', '$routeParams', 'ScheduleFactory'];

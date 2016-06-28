@@ -20,6 +20,9 @@
 		}).when('/getSchedule/:scheduleID', {
 			templateUrl : '/getSchedule.html',
 			controller : 'ScheduleController'
+		}).when('/getSchedule/:scheduleID/addTrip', {
+			templateUrl : '/addTrip.html',
+			controller : 'ScheduleController'
 		}).otherwise('/');
 		
 		// use the HTML5 History API

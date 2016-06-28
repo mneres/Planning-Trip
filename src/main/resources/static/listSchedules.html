@@ -8,7 +8,7 @@
 	    <div class="page-header" align="center">
 			<h2>Minhas viagens</h2>
 				<!-- Button trigger modal -->
-				<a  data-toggle="modal" href="#addSchedule">
+				<a data-toggle="modal" href="#addSchedule">
 					Adicionar nova viagem
 				</a>
 	    </div>
@@ -22,16 +22,16 @@
 		        		<h4 class="modal-title" id="myModalLabel">Adicionar viagem</h4>
 		     		</div>
 				    <div class="modal-body">
-				      	<form class="form-horizontal" role="form">
-				      		<label>Dê um nome para sua viagem:</label><br/>
-	        				<input type="text" class="form-control" ng-model="newScheduleName" placeholder="Digite nome para sua viagem..." /><br />
-				      		<div align="center">
-					      		<button class="btn btn-primary" title="Add" ng-click="addSchedule(newScheduleName)" data-dismiss="modal">
+				    	<form class="form-horizontal" role="form">
+							<label>Dê um nome para sua viagem:</label><br/>
+						 	<input type="text" class="form-control" ng-model="newScheduleName" placeholder="Digite nome para sua viagem..." /><br />
+						  	<div align="center">
+						   		<button class="btn btn-primary" title="Add" ng-click="addSchedule(newScheduleName)" data-dismiss="modal">
 									Salvar
 								</button>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-		            		</div>
-				      	</form>
+						    </div>
+						</form>
 				    </div>
 		    	</div>
 		  	</div>
@@ -41,6 +41,7 @@
 	      Nenhum planejamento criado.
 	    </div>
    		<div class="form-group" ng-repeat="schedule in schedules">
+   			<a href="/getSchedule/{{schedule.id}}/addTrip">+ Adicionar trip</a>
 	      	<div class="checkbox col-xs-9">
 	          <h3><a href="/getSchedule/{{schedule.id}}">{{schedule.name}}</a></h3>
 	     	</div>  

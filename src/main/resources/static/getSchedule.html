@@ -2,9 +2,15 @@
 	<div class="container" id="dashboard">
 		<div class="form-group">
 			<div class="checkbox col-xs-9">
+				<a href="/getSchedule/{{selectedSchedule.id}}/addTrip">+ Adicionar trip</a>
 		        <h2>
 		          {{selectedSchedule.name}}
 		        </h2>
+		        <div class="form-group" ng-repeat="trip in selectedSchedule.trips">
+		        	{{trip.placeOfDeparture}}
+		        	</br>
+		        	{{trip.arrivalEmplacement}}
+		        </div>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,35 @@
+<div id="page-context" class="row">
+	<div class="container" id="dashboard">
+		<form class="form-horizontal" role="form"> 
+			<label>Local de partida</label><br/>
+	    	<input type="text" class="form-control" ng-model="placeOfDeparture" 
+	    		placeholder="" />
+	    		
+	    	<label>Destino</label><br/>
+	    	<input type="text" class="form-control" ng-model="arrivalEmplacement" 
+	    		placeholder="" />
+	    		
+	    	<label>Companhia</label><br/>
+	    	<input type="text" class="form-control" ng-model="transportCompany" 
+	    		placeholder="" />
+	    		
+	    	<label>Preço</label><br/>
+	    	<input type="text" class="form-control" ng-model="transportPrice" 
+	    		placeholder="" />
+	    		
+	    	<label>Acomodação</label><br/>
+	    	<input type="text" class="form-control" ng-model="accommodationName" 
+	    		placeholder="" />
+	    		
+	    	<label>Preço</label><br/>
+	    	<input type="text" class="form-control" ng-model="accommodationPrice" 
+	    		placeholder="" />
+		
+			<button class="btn btn-primary" title="Add" 
+			ng-click="addTripOnSchedule(placeOfDeparture, arrivalEmplacement, 
+			transportCompany, transportPrice, accommodationName, accommodationPrice);">
+				Salvar
+			</button>
+		</form>
+	</div>
+</div>
