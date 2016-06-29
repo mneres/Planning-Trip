@@ -1,5 +1,8 @@
 package com.planning.test.controller;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.transaction.Transactional;
 
 import org.junit.Assert;
@@ -106,7 +109,10 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 		Trip trip = new Trip();
 		trip.setPlaceOfDeparture("dublin");
 		trip.setArrivalEmplacement("amsterdam");
-		trip.setTransportPrice(100);
+		trip.setTransportPrice(new BigDecimal("" + 100.00).setScale(2,
+	            BigDecimal.ROUND_HALF_UP));
+		trip.setStartsAt(new Date());
+		trip.setEndsOn(new Date());
 		return trip;
 	}
 }

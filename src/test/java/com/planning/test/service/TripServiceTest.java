@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -58,7 +61,10 @@ public class TripServiceTest {
 		Trip trip = new Trip();
 		trip.setPlaceOfDeparture("dublin");
 		trip.setArrivalEmplacement("amsterdam");
-		trip.setTransportPrice(100);
+		trip.setTransportPrice(new BigDecimal("" + 100.00).setScale(2,
+	            BigDecimal.ROUND_HALF_UP));
+		trip.setStartsAt(new Date());
+		trip.setEndsOn(new Date());
 		tripService.addTrip(trip);
 		return trip;
 	}

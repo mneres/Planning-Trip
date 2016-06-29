@@ -27,14 +27,18 @@
 	    };
 	    
 	    $scope.addTripOnSchedule = function(placeOfDeparture, arrivalEmplacement, 
-				transportCompany, transportPrice, accommodationName, accommodationPrice){
+				transportCompany, transportPrice, accommodationName, accommodationPrice, 
+				startsAt, endsOn){
+	    	
 	    	var trip = {
 	    			"placeOfDeparture": placeOfDeparture,
 	    			"arrivalEmplacement": arrivalEmplacement,
 	    			"transportCompany": transportCompany,
 	    			"transportPrice": transportPrice,
 	    			"accommodationName": accommodationName,
-	    			"accommodationPrice": accommodationPrice
+	    			"accommodationPrice": accommodationPrice,
+	    			"startsAt": startsAt,
+	    			"endsOn": endsOn
 	    	};
 
 	    	$http.post('/api/schedules/' + $routeParams.scheduleID + '/addTrip', trip)

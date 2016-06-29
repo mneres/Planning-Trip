@@ -3,14 +3,23 @@
 		<div class="form-group">
 			<div class="checkbox col-xs-9">
 				<a href="/getSchedule/{{selectedSchedule.id}}/addTrip">+ Adicionar trip</a>
-		        <h2>
-		          {{selectedSchedule.name}}
-		        </h2>
-		        <div class="form-group" ng-repeat="trip in selectedSchedule.trips">
-		        	{{trip.placeOfDeparture}}
-		        	</br>
-		        	{{trip.arrivalEmplacement}}
-		        </div>
+		        <ul class="media-list">
+				  <li class="media">
+				    <h2>
+				      {{selectedSchedule.name}}
+				    </h2>
+				    <div class="media-body" ng-repeat="trip in selectedSchedule.trips">
+				      From:
+				      <h4 class="media-heading">{{trip.placeOfDeparture}}</h4>
+				      To:
+				      <h4 class="media-heading">{{trip.arrivalEmplacement}}</h4>
+				      {{transportCompany}}
+		    		  {{transportPrice}}
+		    		  {{accommodationName}}
+		    		  {{accommodationPrice}}
+				    </div>
+				  </li>
+				</ul>
 			</div>
 		</div>
 	</div>
