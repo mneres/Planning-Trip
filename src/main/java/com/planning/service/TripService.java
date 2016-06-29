@@ -8,4 +8,6 @@ public interface TripService {
 	boolean remove(Integer id);
 
 	Trip edit(Trip trip);
+
+	Trip findOneByID(Integer id);
 }

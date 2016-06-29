@@ -38,4 +38,9 @@ public class TripServiceImpl implements TripService{
 		return trip;
 	}
 
+	@Override
+	public Trip findOneByID(Integer id) {
+		return tripRepository.findOneById(id);
+	}
+
 }

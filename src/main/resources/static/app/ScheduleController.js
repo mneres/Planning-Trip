@@ -47,6 +47,15 @@
 	    		console.log(data);
 			});
 	   };
+	   
+	   $scope.removeTripFromSchedule = function(scheduleID, trip){
+		   $http.delete('/api/schedules/' + scheduleID + '/removeTrip/' + trip.id)
+			.success(function(data){
+	    		$scope.message = "Trip removida com sucesso";
+	    		var i = $scope.selectedSchedule.trips.indexOf(trip);
+	    		$scope.selectedSchedule.trips.splice(i,1);
+			});
+	   };
 	};
 	
 	ScheduleController.$inject = ['$scope', '$http', '$routeParams', 'ScheduleFactory'];

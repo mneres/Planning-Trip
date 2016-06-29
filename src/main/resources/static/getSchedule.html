@@ -9,6 +9,10 @@
 				      {{selectedSchedule.name}}
 				    </h2>
 				    <div class="media-body" ng-repeat="trip in selectedSchedule.trips">
+				      <button class="pull-right btn btn-danger" type="button" title="Delete" 
+				      	ng-click="removeTripFromSchedule(selectedSchedule.id, trip)">
+			          	<span class="glyphicon glyphicon-trash"></span>
+			          </button>
 				      From:
 				      <h4 class="media-heading">{{trip.placeOfDeparture}}</h4>
 				      To:

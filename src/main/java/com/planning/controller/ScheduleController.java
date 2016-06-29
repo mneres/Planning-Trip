@@ -12,16 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.planning.model.Schedule;
 import com.planning.model.Trip;
 import com.planning.service.ScheduleService;
+import com.planning.service.TripService;
 
 @RestController
 @RequestMapping("/api/schedules")
 public class ScheduleController extends BaseController{
 	
 	private ScheduleService scheduleService;
+	private TripService tripService;
 	
 	@Autowired
-	public void setService(ScheduleService scheduleService){
+	public void setService(ScheduleService scheduleService, TripService tripService){
 		this.scheduleService = scheduleService;
+		this.tripService = tripService;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -52,11 +55,19 @@ public class ScheduleController extends BaseController{
 		scheduleService.remove(id);
 	}
 	
-	@RequestMapping(value = "/{id}/addTrip", method = RequestMethod.POST)
-	public Trip addTripOnSchedule(@PathVariable Integer id, @RequestBody Trip trip) {
-		Schedule schedule = scheduleService.findOneById(id);
+	@RequestMapping(value = "/{idSchedule}/addTrip", method = RequestMethod.POST)
+	public Trip addTripOnSchedule(@PathVariable Integer idSchedule, @RequestBody Trip trip) {
+		Schedule schedule = scheduleService.findOneById(idSchedule);
 		schedule.addTrip(trip);
-		scheduleService.addSchedule(schedule);
+		scheduleService.editSchedule(schedule);
 		return trip;
+	}
+	
+	@RequestMapping(value = "/{idSchedule}/removeTrip/{idTrip}", method = RequestMethod.DELETE)
+	public void removeTripFromSchedule(@PathVariable Integer idSchedule, @PathVariable Integer idTrip) {
+		Schedule schedule = scheduleService.findOneById(idSchedule);
+		Trip trip = tripService.findOneByID(idTrip);
+		schedule.removeTrip(trip);
+		scheduleService.editSchedule(schedule);
 	}
 }		

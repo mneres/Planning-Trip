@@ -28,6 +28,7 @@ public class ScheduleControllerTest extends AbstractControllerTest {
     private WebApplicationContext context;
 	private MockMvc mockMvc;
 	private ScheduleService scheduleService;
+	private static final String uri = "/api/schedules";
 	
 	@Autowired
 	public void setService(ScheduleService scheduleService){
@@ -43,7 +44,6 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 
 	@Test
 	public void getSchedules() throws Exception{
-        String uri = "/api/schedules";
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
         		.get(uri)
         		.accept(MediaType.APPLICATION_JSON))
@@ -54,7 +54,6 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 	
 	@Test
 	public void getScheduleById() throws Exception{
-        String uri = "/api/schedules";
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
         		.get(uri + "/1")
         		.accept(MediaType.APPLICATION_JSON))
@@ -65,7 +64,6 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 	
 	@Test
 	public void addSchedule() throws Exception{
-        String uri = "/api/schedules";
 		Schedule schedule = createSchedule();
 		
 		String inputJson = super.mapToJson(schedule);
@@ -76,13 +74,25 @@ public class ScheduleControllerTest extends AbstractControllerTest {
         		.content(inputJson))
 				.andReturn();
         int status = result.getResponse().getStatus();
+        Assert.assertEquals(200, status);   
+	}
+	
+	@Test
+	public void deleteSchedule() throws Exception{   
+		Schedule schedule = createSchedule();
+		scheduleService.addSchedule(schedule);
+		
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+				.delete(uri + "/" + schedule.getId())
+        		.contentType(MediaType.APPLICATION_JSON)
+        		.accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+        int status = result.getResponse().getStatus();
         Assert.assertEquals(200, status);
 	}
 	
 	@Test
-	public void addTripOnSchedule() throws Exception{
-        String uri = "/api/schedules";
-        
+	public void addTripOnSchedule() throws Exception{ 
 		Schedule schedule = createSchedule();
 		scheduleService.addSchedule(schedule);
 
@@ -98,6 +108,23 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 				.andReturn();
         int status = result.getResponse().getStatus();
         Assert.assertEquals(200, status);
+	}
+	
+	@Test
+	public void removeTripFromSchedule() throws Exception{
+		Schedule schedule = createSchedule();
+		Trip trip = createTrip();
+		schedule.addTrip(trip);
+		scheduleService.addSchedule(schedule);
+		
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+				.delete(uri + "/" + schedule.getId() + "/removeTrip/" + trip.getId())
+        		.contentType(MediaType.APPLICATION_JSON)
+        		.accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+        int status = result.getResponse().getStatus();
+        Assert.assertEquals(200, status);
+	
 	}
 
 	private Schedule createSchedule() {
