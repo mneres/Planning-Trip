@@ -17,6 +17,9 @@
 		}).when('/mySchedules', {
 			templateUrl : 'listSchedules.html',
 			controller : 'ScheduleController'
+		}).when('/addSchedule', {
+			templateUrl : 'addSchedule.html',
+			controller : 'ScheduleController'
 		}).when('/getSchedule/:scheduleID', {
 			templateUrl : '/getSchedule.html',
 			controller : 'ScheduleController'
