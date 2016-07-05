@@ -40,23 +40,25 @@
 	    <div class="alert alert-info" role="alert" ng-hide="schedules &amp;&amp; schedules.length > 0">
 	      Nenhum planejamento criado.
 	    </div>
-   		<div class="form-group" ng-repeat="schedule in schedules">
-   			<a href="/getSchedule/{{schedule.id}}/addTrip">+ Adicionar viagem</a>
-	      	<div class="checkbox col-xs-9">
-	          <h3><a href="/getSchedule/{{schedule.id}}">{{schedule.name}}</a></h3>
-	     	</div>  
-     	 
-	        <div class="col-xs-3">
-	          <button class="pull-right btn btn-danger" type="button" title="Delete" ng-click="deleteSchedule(schedule)">
-	            <span class="glyphicon glyphicon-trash"></span>
-	          </button>
-	          <a href="#">
-		          <button class="pull-right btn btn-primary" type="button" title="Edit">            
-		            	<span class="glyphicon glyphicon-pencil"></span>
-		          </button>
-	          </a>
-	        </div>
-	        <br/>
+   		<div class="container" ng-repeat="schedule in schedules">
+   			<div class="row">
+				<div class="col-xs-6 col-md-6">
+			  		<h3><a href="/getSchedule/{{schedule.id}}">{{schedule.name}}</a></h3>
+			  	</div>
+			  	<div class="col-xs-6 col-md-2">
+		          	<h5>{{schedule.createdAt}}</h5>
+		        </div>
+			  	<div class="col-xs-6 col-md-4">
+					<button class="pull-right btn btn-danger" type="button" title="Delete" ng-click="deleteSchedule(schedule)">
+		            	<span class="glyphicon glyphicon-trash"></span>
+		          	</button>
+		         	<a href="#">
+			        	<button class="pull-right btn btn-primary" type="button" title="Edit">            
+			            	<span class="glyphicon glyphicon-pencil"></span>
+			        	</button>
+		          	</a>
+			  	</div>
+			</div>
        	</div>
 	</div>
 </div>
