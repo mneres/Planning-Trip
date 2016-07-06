@@ -15,6 +15,12 @@
 			$scope.schedules.push(newSchedule);
 		};
 		
+		$scope.updateSchedule = function(schedule, name){
+			schedule.name = name;
+			schedule.$update();
+			$scope.message = "Planejamento editado com sucesso!";
+		}
+		
 		$scope.deleteSchedule = function(schedule) {
 			schedule.$remove(function() {
 	    		$scope.schedules.splice($scope.schedules.indexOf(schedule), 1);
@@ -56,6 +62,12 @@
 	    		$scope.selectedSchedule.trips.splice(i,1);
 			});
 	   };
+	   
+	   $scope.openEditScheduleModal = function(schedule){
+		   $scope.selectedSchedule = schedule;
+		   $scope.editScheduleName = $scope.selectedSchedule.name;
+		   $("#editSchedule").modal();
+	   }
 	};
 	
 	ScheduleController.$inject = ['$scope', '$http', '$routeParams', 'ScheduleFactory'];

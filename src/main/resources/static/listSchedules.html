@@ -14,7 +14,7 @@
 	    </div>
 	    
 	    <!-- Modal add schedule -->
-		<div class="modal fade" id="addSchedule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="addSchedule" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
 		    	<div class="modal-content">
 		      		<div class="modal-header">
@@ -27,6 +27,31 @@
 						 	<input type="text" class="form-control" ng-model="newScheduleName" placeholder="Digite nome para sua viagem..." /><br />
 						  	<div align="center">
 						   		<button class="btn btn-primary" title="Add" ng-click="addSchedule(newScheduleName)" data-dismiss="modal">
+									Salvar
+								</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						    </div>
+						</form>
+					</div>
+		    	</div>
+		  	</div>
+		</div>
+		
+		
+		<!-- Modal edit schedule--> 
+		<div class="modal fade" id="editSchedule" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        		<h4 class="modal-title">Editar planejamento</h4>
+		     		</div>
+				    <div class="modal-body">
+						<form class="form-horizontal" role="form">
+							<label>Dê um nome para sua viagem:</label><br/>
+						 	<input type="text" class="form-control" ng-model="editScheduleName" placeholder="Digite nome para sua viagem..." /><br />
+						  	<div align="center">
+						   		<button class="btn btn-primary" title="Add" ng-click="updateSchedule(selectedSchedule, editScheduleName)" data-dismiss="modal">
 									Salvar
 								</button>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -52,11 +77,9 @@
 					<button class="pull-right btn btn-danger" type="button" title="Delete" ng-click="deleteSchedule(schedule)">
 		            	<span class="glyphicon glyphicon-trash"></span>
 		          	</button>
-		         	<a href="#">
-			        	<button class="pull-right btn btn-primary" type="button" title="Edit">            
+		         	<button class="pull-right btn btn-primary" type="button" title="Edit" ng-click="openEditScheduleModal(schedule)">            
 			            	<span class="glyphicon glyphicon-pencil"></span>
-			        	</button>
-		          	</a>
+			        </button>
 			  	</div>
 			</div>
        	</div>
