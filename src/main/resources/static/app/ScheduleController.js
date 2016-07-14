@@ -1,6 +1,5 @@
 (function(angular) {	
-	var ScheduleController = function($scope, $http, $routeParams, ScheduleFactory) {
-		
+	var ScheduleController = function($scope, $http, $routeParams, ScheduleFactory) {		
 		ScheduleFactory.query(function(response) {
 			$scope.schedules = response ? response : [];
 		});
@@ -67,7 +66,7 @@
 		   $scope.selectedSchedule = schedule;
 		   $scope.editScheduleName = $scope.selectedSchedule.name;
 		   $("#editSchedule").modal();
-	   }
+	   };
 	};
 	
 	ScheduleController.$inject = ['$scope', '$http', '$routeParams', 'ScheduleFactory'];
