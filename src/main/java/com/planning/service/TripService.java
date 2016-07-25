@@ -7,7 +7,7 @@ public interface TripService {
 	
 	boolean remove(Integer id);
 
-	Trip edit(Trip trip);
+	Trip editTrip(Trip trip);
 
 	Trip findOneByID(Integer id);
 }

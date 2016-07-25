@@ -78,6 +78,24 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 	}
 	
 	@Test
+	public void editSchedule() throws Exception{
+		Schedule schedule = createSchedule();
+		scheduleService.addSchedule(schedule);
+		
+		schedule.setName("new name");
+		
+		String inputJson = super.mapToJson(schedule);
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+				.put(uri + "/" + schedule.getId())
+        		.contentType(MediaType.APPLICATION_JSON)
+        		.accept(MediaType.APPLICATION_JSON)
+        		.content(inputJson))
+				.andReturn();
+        int status = result.getResponse().getStatus();
+        Assert.assertEquals(200, status);   
+	}
+	
+	@Test
 	public void deleteSchedule() throws Exception{   
 		Schedule schedule = createSchedule();
 		scheduleService.addSchedule(schedule);
@@ -121,6 +139,27 @@ public class ScheduleControllerTest extends AbstractControllerTest {
 				.delete(uri + "/" + schedule.getId() + "/removeTrip/" + trip.getId())
         		.contentType(MediaType.APPLICATION_JSON)
         		.accept(MediaType.APPLICATION_JSON))
+				.andReturn();
+        int status = result.getResponse().getStatus();
+        Assert.assertEquals(200, status);
+	
+	}
+	
+	@Test
+	public void editTrip() throws Exception{
+		Schedule schedule = createSchedule();
+		Trip trip = createTrip();
+		schedule.addTrip(trip);
+		scheduleService.addSchedule(schedule);
+		
+		trip.setPlaceOfDeparture("Berlin");
+		
+		String inputJson = super.mapToJson(schedule);
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+				.put(uri + "/editTrip/" + trip.getId())
+        		.contentType(MediaType.APPLICATION_JSON)
+        		.accept(MediaType.APPLICATION_JSON)
+        		.content(inputJson))
 				.andReturn();
         int status = result.getResponse().getStatus();
         Assert.assertEquals(200, status);

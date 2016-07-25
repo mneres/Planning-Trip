@@ -8,6 +8,7 @@
 			<table class="table table-striped">
 			    <thead>
 			      <tr>
+			      	  <th>Editar</th>
 				      <th>Deletar</th>
 				      <th>Partida</th>
 				      <th>Destino</th>
@@ -21,6 +22,10 @@
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="trip in selectedSchedule.trips">
+			          <td><button class="pull-right btn btn-success" type="button" title="Delete" 
+				      	ng-click="getTrip(trip)">
+				         	<span class="glyphicon glyphicon-pencil"></span>
+				         </button></td>
 			          <td><button class="pull-right btn btn-danger" type="button" title="Delete" 
 				      	ng-click="removeTripFromSchedule(selectedSchedule.id, trip)">
 				         	<span class="glyphicon glyphicon-trash"></span>
@@ -39,7 +44,7 @@
 				      </td>
 			      </tr>
 			      <tr style="background-color: #ccc; color: #000; font-style: bold">
-			      	<td colspan="6">Soma dos valores</td>
+			      	<td colspan="7">Soma dos valores</td>
 			      	<td>{{trips.total.sumTransportPrice}}</td>
 			      	<td></td>
 			      	<td>{{trips.total.sumAccommodationPrice}}</td>

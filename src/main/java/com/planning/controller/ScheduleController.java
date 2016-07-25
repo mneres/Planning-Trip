@@ -69,5 +69,13 @@ public class ScheduleController extends BaseController{
 		Trip trip = tripService.findOneByID(idTrip);
 		schedule.removeTrip(trip);
 		scheduleService.editSchedule(schedule);
+		tripService.remove(idTrip);
 	}
+	
+	@RequestMapping(value = "/editTrip/{id}", method = RequestMethod.PUT)
+	public Trip updateTrip(@RequestBody Trip updatedTrip, @PathVariable Integer id) {
+		updatedTrip.setId(id);
+		tripService.editTrip(updatedTrip);
+		return updatedTrip;
+	}	
 }		

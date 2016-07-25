@@ -8,6 +8,8 @@
 		$routeProvider.when('/', {
 			templateUrl : 'home.html',
 			controller : 'home'
+		}).when('/error', {
+			templateUrl : 'error.html',
 		}).when('/login', {
 			templateUrl : 'login.html',
 			controller : 'navigation'
@@ -25,6 +27,9 @@
 			controller : 'ScheduleController'
 		}).when('/getSchedule/:scheduleID/addTrip', {
 			templateUrl : '/addTrip.html',
+			controller : 'ScheduleController'
+		}).when('/editTrip/:tripID', {
+			templateUrl : '/editTrip.html',
 			controller : 'ScheduleController'
 		}).otherwise('/');
 		

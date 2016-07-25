@@ -52,7 +52,7 @@ public class TripServiceTest {
 		assertEquals("dublin", trip.getPlaceOfDeparture());
 		
 		trip.setPlaceOfDeparture("cork");
-		tripService.edit(trip);
+		tripService.editTrip(trip);
 		
 		assertEquals("cork", trip.getPlaceOfDeparture());
 	}

@@ -1,0 +1,45 @@
+<div id="page-context" class="row"  data-ng-init="setTrip()>
+	<div class="container" id="dashboard">
+		<form class="form-horizontal" role="form"> 
+			<label>Local de partida</label><br/>
+	    	<input type="text" class="form-control" ng-model="placeOfDeparture" 
+	    		placeholder="" />
+	    		
+	    	<label>Destino</label><br/>
+	    	<input type="text" class="form-control" ng-model="arrivalEmplacement" 
+	    		placeholder="" />
+	    		
+	        <label>Início</label><br/>
+	    	<input type="date" class="form-control" ng-model="startsAt" 
+	    		placeholder="" />
+	    		
+	    	<label>Fim</label><br/>
+	    	<input type="date" class="form-control" ng-model="endsOn" 
+	    		placeholder="" />
+	    		
+	    	<label>Companhia</label><br/>
+	    	<input type="text" class="form-control" ng-model="transportCompany" 
+	    		placeholder="" />
+	    		
+	    	<label>Preço</label><br/>
+	    	<input type="text" class="form-control" ng-model="transportPrice" 
+	    		placeholder="" />
+	    		
+	    	<label>Acomodação</label><br/>
+	    	<input type="text" class="form-control" ng-model="accommodationName" 
+	    		placeholder="" />
+	    		
+	    	<label>Preço</label><br/>
+	    	<input type="text" class="form-control" ng-model="accommodationPrice" 
+	    		placeholder="" />
+		
+			<br/>
+			<button class="btn btn-primary" title="Add" 
+			ng-click="editTrip(placeOfDeparture, arrivalEmplacement, 
+			transportCompany, transportPrice, accommodationName, accommodationPrice, 
+			startsAt, endsOn);">
+				Salvar
+			</button>
+		</form>
+	</div>
+</div>
